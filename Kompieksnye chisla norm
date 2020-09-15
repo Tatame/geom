@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+int main (){
+    int n=0, s=0;
+    double vesh=0, mn=0, r=0, f=0;
+   begin: printf("Введите вещественную часть числа\n");
+    scanf("%lf",&vesh);
+    printf("Введите мнимую часть числа\n");
+    scanf("%lf",&mn);
+    printf("Введите степень (натуральное число)\n");
+    scanf("%d",&n);
+    r=sqrt(vesh*vesh+mn*mn);
+    f=atan(mn/vesh);
+     while (s!=6){
+       now:printf("Какое действие хотите произвести?\n0-Тригонометрическая запись числа\n1-Обратное число\n2-Возведение в степень\n3-Все корни n-ой степени\n4-Все операции\n5-Сменить число\n6-Закончить программу\n");
+       scanf("%d",&s);
+        switch (s) {
+        case 0: printf("Z=%lf*(cos(%lf)+i*sin(%lf))\n",r,f,f); break;
+        case 1: printf("Z^-1=%lf-i*%lf\n",vesh/r,mn/r); break;
+        case 2: if ((mn==0)&&(vesh<0)) {
+            if (n%2==1) printf("Z^n=-%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n*(-1),f*n*(-1));
+            else printf("Z^n=%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n*(-1),f*n*(-1));
+        }
+        else printf("Z^n=%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n,f*n);break;
+        case 3: printf("n/Z=%lf*(cos(%lf+2pk)+i*sin(%lf+2pk))\n",pow(r,1/n),f/n,f/n); break;
+        case 4: printf("Z=%lf*(cos(%lf)+i*sin(%lf))\n",r,f,f); printf("Z^-1=%lf-i*%lf\n",vesh/r,mn/r);  if ((mn==0)&&(vesh<0)) {
+            if (n%2==1) printf("Z^n=-%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n*(-1),f*n*(-1));
+            else printf("Z^n=%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n*(-1),f*n*(-1));
+        }; printf("n/Z=%lf*(cos(%lf+2pk)+i*sin(%lf+2pk))\n",pow(r,1/n),f/n,f/n); break;
+        case 5: goto begin;
+        case 6: break;
+        default : printf ("Нет такого варианта\n");
+    }
+    }
+    return 0;
+}
