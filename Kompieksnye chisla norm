@@ -10,12 +10,14 @@ int main (){
     printf("Введите степень (натуральное число)\n");
     scanf("%d",&n);
     r=sqrt(vesh*vesh+mn*mn);
-    f=atan(mn/vesh);
+    f=acos(vesh/r);
+    if (mn>=0) f=acos(vesh/r);
+    else f=M_PI-f+M_PI;
      while (s!=6){
        now:printf("Какое действие хотите произвести?\n0-Тригонометрическая запись числа\n1-Обратное число\n2-Возведение в степень\n3-Все корни n-ой степени\n4-Все операции\n5-Сменить число\n6-Закончить программу\n");
        scanf("%d",&s);
         switch (s) {
-        case 0: printf("Z=%lf*(cos(%lf)+i*sin(%lf))\n",r,f,f); break;
+        case 0: printf("Z=%lf*(cos(%lf)+i*sin(%lf))\n",r,f,f); printf("Z=%lf*(%lf+i*%lf)\n",r,cos(f),sin(f)); break;
         case 1: printf("Z^-1=%lf-i*%lf\n",vesh/r,mn/r); break;
         case 2: if ((mn==0)&&(vesh<0)) {
             if (n%2==1) printf("Z^n=-%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n*(-1),f*n*(-1));
