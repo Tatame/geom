@@ -17,21 +17,21 @@ int main (){
        now:printf("Какое действие хотите произвести?\n0-Тригонометрическая запись числа\n1-Обратное число\n2-Возведение в степень\n3-Все корни n-ой степени\n4-Все операции\n5-Сменить число\n6-Закончить программу\n");
        scanf("%d",&s);
         switch (s) {
-        case 0: printf("Z=%lf*(cos(%lf)+i*sin(%lf))\n",r,f,f); break;
-        case 1: printf("Z^-1=%lf-i*%lf\n",vesh/r,mn/r); break;
-        case 2: printf("Z^n=%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n,f*n);
-                printf("Z^n=%lf*(%lf+i*%lf)\n",pow(r,n),cos(f*n),sin(f*n));
-                printf("Z^n=%lf+i*%lf\n",pow(r,n)*cos(f*n),pow(r,n)*sin(f*n)); break;
-        case 3: printf("n/Z=%lf*(cos(%lf+2pk/%d)+i*sin(%lf+2pk/%d))\n",pow(r,1/n),f/n,n,f/n,n); break;
-        case 4: printf("Z=%lf*(cos(%lf)+i*sin(%lf))\n",r,f,f);
-                printf("Z^-1=%lf-i*%lf\n",vesh/r,mn/r); 
-                printf("Z^n=%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n,f*n);
-                printf("Z^n=%lf+i*%lf\n",pow(r,n)*cos(f*n),pow(r,n)*sin(f*n));  
-                printf("n/Z=%lf*(cos(%lf+2pk/%d)+i*sin(%lf+2pk/%d))\n",pow(r,1/n),f/n,n,f/n,n); break;
-        case 5: goto begin;
-        case 6: break;
-        default : printf ("Нет такого варианта\n");
-    }
+            case 0: printf("Z=%lf*(cos(%lf)+i*sin(%lf))\n",r,f,f); break;
+            case 1: printf("Z^-1=%lf-i*%lf\n",vesh/r,mn/r); break;
+            case 2: printf("Z^n=%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n,f*n);
+                    printf("Z^n=%lf*(%lf+i*%lf)\n",pow(r,n),cos(f*n),sin(f*n));
+                    printf("Z^n=%lf+i*%lf\n",pow(r,n)*cos(f*n),pow(r,n)*sin(f*n)); break;
+            case 3: printf("n/Z=%lf*(cos(%lf+2pk/%d)+i*sin(%lf+2pk/%d))\n",pow(r,1/(float)n),f/n,n,f/n,n); break;
+            case 4: printf("Z=%lf*(cos(%lf)+i*sin(%lf))\n",r,f,f);
+                    printf("Z^-1=%lf-i*%lf\n",vesh/r,mn/r); 
+                    printf("Z^n=%lf*(cos(%lf)+i*sin(%lf))\n",pow(r,n),f*n,f*n);
+                    printf("Z^n=%lf+i*%lf\n",pow(r,n)*cos(f*n),pow(r,n)*sin(f*n));  
+                    printf("n/Z=%lf*(cos(%lf+2pk/%d)+i*sin(%lf+2pk/%d))\n",pow(r,1/n),f/n,n,f/n,n); break;
+            case 5: goto begin;
+            case 6: break;
+            default : printf ("Нет такого варианта\n");
+        }
     }
     return 0;
 }
