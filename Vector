@@ -1,0 +1,20 @@
+#include <stdio.h>
+int koll(int* a,int* b){
+    if (((a[0]/(float)b[0])==(a[1]/(float)b[1]))&&((a[1]/(float)b[1])==(a[2]/(float)b[2]))) return 1;
+    else return 0;
+}
+int main (){
+    int a[3]={0};
+    int b[3]={0};
+    int c[3]={0};
+    printf("Введите координаты вектора a\n");
+    for (int i=0;i<3;i++) scanf("%d",&a[i]);
+    printf("Введите координаты вектора b\n");
+    for (int i=0;i<3;i++) scanf("%d",&b[i]);
+    printf("Введите координаты вектора c\n");
+    for (int i=0;i<3;i++) scanf("%d",&c[i]);
+    if (koll(a,b)==1) printf("Векторы a и b коллинеарны\n");
+    if (koll(b,c)==1) printf("Векторы b и c коллинеарны\n");
+    if (koll(a,c)==1) printf("Векторы a и c коллинеарны\n");
+    return 0;
+}
