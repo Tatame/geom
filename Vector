@@ -2,14 +2,7 @@
 #include <math.h>
 
 int koll(int* a, int* b){
-    int kol0a=0,kol0b=0;
-    for (int i=0;i<3;i++) if (a[i]==0) kol0a+=1;
-    for (int i=0;i<3;i++) if (b[i]==0) kol0b+=1;
-    if ((kol0a==3)||(kol0b==3)) return 1;
-    double scal=a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
-    double moda=sqrt(a[0]*a[0]+a[1]*a[1]+a[2]*a[2]);
-    double modb=sqrt(b[0]*b[0]+b[1]*b[1]+b[2]*b[2]);
-    if ((scal==moda*modb)||(scal==-1*moda*modb)) return 1;
+    if (((a[1]*b[2]-a[2]*b[1])==0)&&((a[2]*b[0]-a[0]*b[2])==0)&&((a[0]*b[1]-a[1]*b[0])==0)) return 1;
     else return 0;
 }
 int main (){
