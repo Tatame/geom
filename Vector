@@ -32,7 +32,14 @@ int main (){
     if (opred>=1) printf("Векторы не компланарны, ранг системы - 3");
     else{
       printf("Векторы компланарны, ");
-      if (f==3) printf("ранг системы - 1");
+      if (f==3){
+          int sum=0;
+        for (int i=0;i<3;i++){
+            if ((a[i]==0)&&(b[i]==0)&&(c[i]==0)) sum+=1;
+        }
+        if (sum==3) printf("ранг системы - 0");
+        else printf("ранг системы - 1");
+      } 
       else printf("ранг системы - 2");
     } 
     return 0;
