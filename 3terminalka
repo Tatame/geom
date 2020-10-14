@@ -8,10 +8,13 @@ int main(){
     scanf("%d",&k);
     for (int i=0;i<k;i++){
         for (int j=0; j<n;j++){
-            scanf("%lf",vector[i][j]);
+            scanf("%lf",&vector[i][j]);
         }
     }
-    for(int j=0; j<n;j++){
+    double m=0;
+    if (n>k) m=k;
+    else m=n;
+    for(int j=0; j<m;j++){
         for(int i=1;i<k;i++){
             for(int s=i;s<k;s++){
                 x=vector[s][j]/vector[i-1][j];
