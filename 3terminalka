@@ -1,24 +1,72 @@
 #include<stdio.h>
 #include<stdlib.h>
 int main(){
-    int n=0,s=0, k=0, f=0;
+    int n=0, k=0, s=0, f=0;
     double x=0, r=0;
     scanf("%d",&n);
     scanf("%d",&k);
     double**a=(double**)malloc(k*sizeof(double*));
     for (int i=0; i<n+1; i++){
-        a[i]=(double*)malloc(n*sizeof(double));
+        a[i]=(double*)malloc((n)*sizeof(double));
     }
-    
     for (int i=0; i<k; i++){
         for (int j=0; j<n; j++){
             scanf("%lf",&a[i][j]);
         }
     }
-    if (k<n) f=k;
-    for (int i=0; i<f; i++){
+    
+    if (k<=n) { // линейные преобразования усли строк меньше чем столбцов
+        f=n;
+        n=k;
+    for (int i=0; i<n; i++){
             if (a[i][i]!=0){
-                for (int j=i+1; j<f;j++){
+                for (int j=i+1; j<n;j++){
+                    x=a[j][i]/a[i][i];
+                    for (int l=i; l<f; l++){
+                        a[j][l]=a[j][l]-x*a[i][l];
+                    }
+                }
+            }
+            else {
+                s=i;
+                while ((a[s][i]==0)&&(s<n)) s+=1;
+                if (s!=n-1){
+                    for (int j=s+1; j<n;j++){
+                        x=a[j][i]/a[s][i];
+                        for (int l=i; l<f; l++){
+                            a[j][l]=a[j][l]-x*a[s][l];
+                        }
+                    }
+                }
+            }
+    }
+    for (int i=0; i<n; i++){ // перестановка в ступенчатый вид
+        for (int j=i; j<n; j++){
+            if ((a[j][i]!=0)&&(j!=i)){
+                for (int h=0; h<f; h++){
+                    r=a[j][h]; a[j][h]=a[i][h]; a[i][h]=r;
+                }
+                break;
+            }
+            if ((a[j][i]!=0)&&(j==i)) break;
+        }
+    } 
+     int kol=0, sum=0;
+    for (int i=0; i<k; i++){
+        kol=0;
+        for (int j=0; j<f; j++){
+            if (a[i][j]==0) kol+=1;
+        }
+        if (kol==n) sum+=1;
+    }
+    if (sum==0) printf("Система линейно независима.\nРанг системы - %d.\n",k);
+    else printf("Система линейно зависима.\nРанг системы - %d.\n",k-sum);
+    return 0;
+    }
+    else { //линейные преобразования если строк больше чем столбцов
+        for (int i=0; i<n; i++){
+            if (a[i][i]!=0){
+                for (int j=i+1; j<k;j++){
                     x=a[j][i]/a[i][i];
                     for (int l=i; l<n; l++){
                         a[j][l]=a[j][l]-x*a[i][l];
@@ -27,9 +75,9 @@ int main(){
             }
             else {
                 s=i;
-                while ((a[s][i]==0)&&(s<f)) s+=1;
-                if (s!=f-1){
-                    for (int j=s+1; j<f;j++){
+                while ((a[s][i]==0)&&(s<k)) s+=1;
+                if (s!=k-1){
+                    for (int j=s+1; j<k;j++){
                         x=a[j][i]/a[s][i];
                         for (int l=i; l<n; l++){
                             a[j][l]=a[j][l]-x*a[s][l];
@@ -37,18 +85,39 @@ int main(){
                     }
                 }
             }
-        
     }
-    for (int i=0; i<f; i++){
-        for (int j=i; j<f; j++){
+    for (int i=0; i<k; i++){ // перестановка в ступенчатый вид
+        for (int j=i; j<k; j++){
             if ((a[j][i]!=0)&&(j!=i)){
-                for (int k=0; k<n; k++){
-                    r=a[j][k]; a[j][k]=a[i][k]; a[i][k]=r;
+                for (int h=0; h<n; h++){
+                    r=a[j][h]; a[j][h]=a[i][h]; a[i][h]=r;
                 }
                 break;
             }
             if ((a[j][i]!=0)&&(j==i)) break;
         }
+    } 
+    for (int i=0; i<n; i++){
+            if (a[i][i]!=0){
+                for (int j=i+1; j<k;j++){
+                    x=a[j][i]/a[i][i];
+                    for (int l=i; l<n; l++){
+                        a[j][l]=a[j][l]-x*a[i][l];
+                    }
+                }
+            }
+            else {
+                s=i;
+                while ((a[s][i]==0)&&(s<k)) s+=1;
+                if (s!=k-1){
+                    for (int j=s+1; j<k;j++){
+                        x=a[j][i]/a[s][i];
+                        for (int l=i; l<n; l++){
+                            a[j][l]=a[j][l]-x*a[s][l];
+                        }
+                    }
+                }
+            }
     }
     int kol=0, sum=0;
     for (int i=0; i<k; i++){
@@ -60,11 +129,10 @@ int main(){
     }
     if (sum==0) printf("Система линейно независима.\nРанг системы - %d.\n",k);
     else printf("Система линейно зависима.\nРанг системы - %d.\n",k-sum);
-    for (int i=0; i<n; i++){
-        for (int j=0; j<n+1; j++){
-            printf("%lf ",a[i][j]);
-        }
-        printf("\n");
-    }
     return 0;
+    }
+    
+    
+    
+    
 }
