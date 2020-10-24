@@ -6,8 +6,8 @@ int main(){
     scanf("%d",&n);
     scanf("%d",&k);
     double**a=(double**)malloc(k*sizeof(double*));
-    for (int i=0; i<n+1; i++){
-        a[i]=(double*)malloc((n)*sizeof(double));
+    for (int i=0; i<k; i++){
+        a[i]=(double*)malloc(n*sizeof(double));
     }
     for (int i=0; i<k; i++){
         for (int j=0; j<n; j++){
@@ -51,13 +51,19 @@ int main(){
             if ((a[j][i]!=0)&&(j==i)) break;
         }
     } 
+    /*for (int i=0; i<n; i++){
+        for (int j=0; j<f; j++){
+            printf("%lf ",a[i][j]);
+        }
+        printf("\n");
+    }*/
      int kol=0, sum=0;
-    for (int i=0; i<k; i++){
+    for (int i=0; i<n; i++){
         kol=0;
         for (int j=0; j<f; j++){
             if (a[i][j]==0) kol+=1;
         }
-        if (kol==n) sum+=1;
+        if (kol==f) sum+=1;
     }
     if (sum==0) printf("Система линейно независима.\nРанг системы - %d.\n",k);
     else printf("Система линейно зависима.\nРанг системы - %d.\n",k-sum);
@@ -119,6 +125,12 @@ int main(){
                 }
             }
     }
+    /*for (int i=0; i<k; i++){
+        for (int j=0; j<n; j++){
+            printf("%lf",a[i][j]);
+        }
+        printf("\n");
+    }*/
     int kol=0, sum=0;
     for (int i=0; i<k; i++){
         kol=0;
