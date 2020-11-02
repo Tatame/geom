@@ -15,18 +15,18 @@ int main(){
         }
     }
     /////////////////////////////////////////////////////////////
-    int nul=0;
+    /*int nul=0;*/
     for (int i=0; i<n; i++){
-        for (int i=0; i<n; i++){
+        /*for (int l=0; l<n; l++){
             nul=0;
-            for (int j=i; j<n; j++){
-                if (a[j][i]!=null) {
+            for (int j=l; j<n; j++){
+                if (a[j][l]!=null) {
                     nul=1;
                     break;
                 }
             }
         }
-            if (nul){
+            if (nul){*/
                 if (a[i][i]!=null){
                     for (int j=i+1; j<n;j++){
                         x=a[j][i]/a[i][i];
@@ -47,7 +47,7 @@ int main(){
                         }
                     }
                 }
-            }
+           // }
         
     }
     /////////////////////////////////////////////////////////////
@@ -73,12 +73,12 @@ int main(){
     if (kol%2==1) det*=-1;
     if (det==null) det=0;
     //////////////////////////////////////////////////////////////////////////
-    printf("Определитель матрицы = %0.3lf",det);
-    /*for (int i=0; i<n; i++){
+    printf("Определитель матрицы = %0.3lf\n",det);
+    for (int i=0; i<n; i++){
         for (int j=0; j<n; j++){
             printf("%lf ",a[i][j]);
         }
         printf("\n");
-    }*/
+    }
     return 0;
 }
