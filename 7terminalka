@@ -73,13 +73,15 @@ int main(){
             }
         }
     }
-    double kol=0;
+    int kol=0;
     
     for (int i=0; i<m; i++){
         for (int j=0; j<n; j++){
-            kol+=a[i][j];
+            if (a[i][j]!=null){
+                kol+=1;
+            }
         }
-        if (kol==null){
+        if (kol==0){
             for (int h=i; h<m-1; h++){
                 for (int l=0; l<n; l++){
                     a[h][l]=a[h+1][l];
@@ -90,7 +92,55 @@ int main(){
         kol=0;
     }
     
+    /*int *b=(int*)malloc(n*sizeof(int));
+    for (int i=0; i<n; i++) b[i]=0;
+    double *ix=(double*)malloc(n*sizeof(double));
+    for (int i=0; i<n; i++) ix[i]=0;
+    int niz=0;
+    kol=0;
     
+    for (int i=m-1;i>=0;i--){
+        for (int j=0; j<n; j++){
+            if (a[i][j]!=null){
+                niz=i;
+                break;
+            }
+        }
+        if (niz!=0) break;
+    }
+    //printf("%d\n",niz);
+    for (int i=niz; i>=0; i--){
+        for (int j=0; j<n; j++){
+            if (a[i][j]!=null){
+                b[j]+=1;
+                break;
+            }
+        }
+    }
+    
+    int in=0;
+    for (int i=0; i<n; i++){
+        if (b[i]==0){
+            in=i;
+            b[i]=2;
+            ix[i]=1;
+            for (int j=niz; j>=0; j--){
+                for (int l=0; l<n; l++){
+                    if (a[j][l]!=0){
+                        for (int h=l+1; h<n; h++){
+                            ix[l]+=ix[h]*a[j][h]*(-1);
+                        }
+                    }
+                    break;
+                }
+            }
+            for (int k=0; k<n; k++){
+                printf("%lf ",ix[k]);
+            }
+            printf("\n");
+            for (int q=0; q<n; q++) ix[q]=0;
+        }
+    }*/
     
     for (int i=0; i<m; i++){
         for (int j=0; j<n; j++){
@@ -98,7 +148,9 @@ int main(){
         }
         printf("\n");
     }
-    
+    /*for (int i=0; i<n; i++){
+        printf("%d ", b[i]);
+    }*/
     
     return 0;
 }
