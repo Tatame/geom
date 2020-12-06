@@ -15,7 +15,7 @@ int main(){
         }
     }
     double x=0, r=0;
-    if (m<n) flag=1;
+    if (m<=n) flag=1;
     
     for (int i=0; i<m; i++){ 
         for (int j=i; j<m; j++){
@@ -92,7 +92,7 @@ int main(){
         kol=0;
     }
     
-    /*int *b=(int*)malloc(n*sizeof(int));
+    int *b=(int*)malloc(n*sizeof(int));
     for (int i=0; i<n; i++) b[i]=0;
     double *ix=(double*)malloc(n*sizeof(double));
     for (int i=0; i<n; i++) ix[i]=0;
@@ -117,21 +117,20 @@ int main(){
             }
         }
     }
-    
-    int in=0;
+    printf("Fundamental system of solutions\n");
     for (int i=0; i<n; i++){
         if (b[i]==0){
-            in=i;
-            b[i]=2;
             ix[i]=1;
             for (int j=niz; j>=0; j--){
                 for (int l=0; l<n; l++){
-                    if (a[j][l]!=0){
+                    if (a[j][l]!=null){
+                        
                         for (int h=l+1; h<n; h++){
                             ix[l]+=ix[h]*a[j][h]*(-1);
                         }
+                        ix[l]=ix[l]/a[j][l];
                     }
-                    break;
+                    if (a[j][l]!=null) break;
                 }
             }
             for (int k=0; k<n; k++){
@@ -140,15 +139,15 @@ int main(){
             printf("\n");
             for (int q=0; q<n; q++) ix[q]=0;
         }
-    }*/
-    
+    }
+    /*printf("\n");
     for (int i=0; i<m; i++){
         for (int j=0; j<n; j++){
             printf("%lf ",a[i][j]);
         }
         printf("\n");
     }
-    /*for (int i=0; i<n; i++){
+    for (int i=0; i<n; i++){
         printf("%d ", b[i]);
     }*/
     
