@@ -16,7 +16,7 @@ int main(){
     }
     double x=0, r=0;
     if (m<=n) flag=1;
-    
+    //перестановка
     for (int i=0; i<m; i++){ 
         for (int j=i; j<m; j++){
             if ((a[j][i]!=null)&&(j!=i)){
@@ -28,7 +28,7 @@ int main(){
             if ((a[j][i]!=null)&&(j==i)) break;
         }
     } 
-    
+    //приводим к ступенчатому виду
     if (flag==1){
         for (int i=0; i<m; i++){
             if (a[i][i]!=null){
@@ -74,7 +74,7 @@ int main(){
         }
     }
     int kol=0;
-    
+    //нулевые строки в конец
     for (int i=0; i<m; i++){
         for (int j=0; j<n; j++){
             if (a[i][j]!=null){
@@ -91,14 +91,14 @@ int main(){
         }
         kol=0;
     }
-    
+    //задаем массивы зависимых и свободных переменных и ответов
     int *b=(int*)malloc(n*sizeof(int));
     for (int i=0; i<n; i++) b[i]=0;
     double *ix=(double*)malloc(n*sizeof(double));
     for (int i=0; i<n; i++) ix[i]=0;
     int niz=0;
     kol=0;
-    
+    //ищем нижнюю ненулевую строку
     for (int i=m-1;i>=0;i--){
         for (int j=0; j<n; j++){
             if (a[i][j]!=null){
@@ -109,6 +109,7 @@ int main(){
         if (niz!=0) break;
     }
     //printf("%d\n",niz);
+    //ищем зависимые переменные
     for (int i=niz; i>=0; i--){
         for (int j=0; j<n; j++){
             if (a[i][j]!=null){
@@ -119,6 +120,7 @@ int main(){
     }
     int in=1;
     printf("Fundamental system of solutions\n");
+    //Ищем ответ, подставляя вместо одной из свободных пересенных 1
     for (int i=0; i<n; i++){
         if (b[i]==0){
             ix[i]=1;
